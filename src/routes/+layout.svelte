@@ -2,17 +2,9 @@
 	import '../app.postcss'
 
 	import { Theme, ThemeToggle, ThemeSelect } from '$lib'
-	import { defaultIcons } from '$lib/icon'
 	import { createThemeSwitcher } from '$lib/theme'
 
-	const theme = createThemeSwitcher({
-		icons: defaultIcons,
-		labels: {
-			light: 'Light',
-			dark: 'Dark',
-			system: 'System',
-		},
-	})
+	const theme = createThemeSwitcher()
 </script>
 
 <div class="max-w-4xl mx-auto px-4 py-4 dark:text-gray-100">
@@ -31,6 +23,6 @@
 
 <style global type="postcss">
 	body {
-		@apply bg-neutral-50 dark:bg-neutral-900;
+		@apply bg-slate-100 dark:bg-slate-900;
 	}
 </style>

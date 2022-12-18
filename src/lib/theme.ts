@@ -1,5 +1,6 @@
 import { browser } from "$app/environment"
 import { writable } from "svelte/store"
+import { defaultColors } from "./colors"
 import { defaultIcons, type Icons } from "./icon"
 
 export type Theme = 'light' | 'dark' | 'system'
@@ -25,7 +26,7 @@ export interface Config {
 }
 
 export function createThemeSwitcher(config?: Partial<Config>) {
-  const { key, icons, labels } = { key: 'theme', icons: defaultIcons, labels: defaultLabels, ...config }
+  const { key, colors, icons, labels } = { key: 'theme', colors: defaultColors, icons: defaultIcons, labels: defaultLabels, ...config }
 
   let theme: Theme = 'system'
 
@@ -49,6 +50,7 @@ export function createThemeSwitcher(config?: Partial<Config>) {
   return {
     subscribe,
     setTheme,
+    colors,
     icons,
     labels,
   }

@@ -42,18 +42,16 @@
 		leaveTo="transform opacity-0 scale-95"
 		on:after-leave={closed}
 	>
-		<ul
-			class="origin-top-right absolute right-0 py-1 mt-2 w-28 rounded-md shadow-lg text-neutral-700 bg-white ring-1 ring-black ring-opacity-5 dark:bg-neutral-800 dark:ring-0 dark:highlight-white/5 dark:text-neutral-300 focus:outline-none"
-			use:menu.items
-		>
+		<ul class="origin-top-right absolute right-0 py-1 mt-2 w-28 rounded-md shadow-lg focus:outline-none {theme.colors.dropdownList}" use:menu.items>
 			{#each themes as value}
-				{@const selected = value === $theme}
+				{@const active = value === $theme}
 				<li
-					class="flex items-center px-2 py-1 text-sm font-semibold cursor-pointer hover:bg-neutral-50 hover:dark:bg-neutral-600/30"
-					class:text-sky-500={selected}
+					class="flex items-center px-2 py-1 text-sm font-semibold cursor-pointer {theme.colors.dropdownHover} {active
+						? theme.colors.textActive
+						: ''}"
 					use:menu.item={{ value }}
 				>
-					{@html theme.icons[value](selected, 'w-6 h-6 mr-2')}
+					{@html theme.icons[value](active, 'w-6 h-6 mr-2')}
 					{theme.labels[value]}
 				</li>
 			{/each}
