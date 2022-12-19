@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
-	import type { ThemeStore } from './theme'
+	import { getThemeStore } from './context'
 
-	export let theme: ThemeStore
+	const theme = getThemeStore()
 
 	// NOTE: the body of this function is also written into the page head to execute on initial page load
 	const applyTheme = () =>

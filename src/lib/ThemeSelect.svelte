@@ -1,8 +1,8 @@
 <script lang="ts">
-	// NOTE: Moon icon is not re-used because style needs to be slightly brighter
-	import { themes, type Theme, type ThemeStore } from './theme'
+	import { getThemeStore } from './context'
+	import { themes, type Theme } from './theme'
 
-	export let theme: ThemeStore
+	const theme = getThemeStore()
 
 	function onChange(e: Event) {
 		const el = e.target as HTMLSelectElement

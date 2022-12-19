@@ -26,33 +26,33 @@ Install using your package manager of choice:
 
 ### Add to root +layout.svelte
 
-Create an instance of the theme manager in your root `src/routes/+layout.svelte` file. Pass the theme manager to each component. The `<Theme>` component writes the JS into the page to apply the theme. The `<ThemeToggle>` component provides the desktop icon and menu, the `<ThemeSelect>` component provides the mobile friendly equivalent. This is a cut-down layout, checkout the [ready made templates available from TailwindUI](https://tailwindui.com/).
+Create an instance of the theme manager in your root `src/routes/+layout.svelte` file and include the `<Theme>` component which writes the JS into the page to apply the theme. The `<ThemeToggle>` component provides the desktop icon and menu, the `<ThemeSelect>` component provides the mobile friendly equivalent. This is a cut-down layout, checkout the [ready made templates available from TailwindUI](https://tailwindui.com/).
 
 ```svelte
 <script lang="ts">
   import { createThemeSwitcher, Theme, ThemeToggle, ThemeSelect } from 'svelte-theme-select'
   import '../app.postcss'
 
-  const theme = createThemeSwitcher()
+  createThemeSwitcher()
 </script>
 
 <nav>
   <!-- desktop navigation -->
   <div class="hidden md:block">
     <!-- logo and rest of options -->
-    <ThemeToggle {theme}>
+    <ThemeToggle />
   </div>
 
   <!-- mobile navigation -->
   <div class="block md:hidden">
     <!-- logo and rest of options -->
-    <ThemeSelect {theme}>
+    <ThemeSelect />
   </div>
 </nav>
 
 <slot />
 
-<Theme {theme} />
+<Theme />
 ```
 
 ### Configure TailwindCSS dark-mode

@@ -1,11 +1,10 @@
-<script lang="ts" context="module">
-	import { createThemeSwitcher } from '$lib'
-	import { Theme } from '$lib'
+<script lang="ts">
+	import { createThemeSwitcher, Theme } from '$lib'
 	import '../app.postcss'
 
-	export const theme = createThemeSwitcher()
+	createThemeSwitcher()
 </script>
 
 <slot />
 
-<Theme {theme} />
+<Theme />

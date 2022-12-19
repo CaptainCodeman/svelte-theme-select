@@ -1,6 +1,5 @@
 <script>
 	import { ThemeToggle, ThemeSelect } from '$lib'
-	import { theme } from './+layout.svelte'
 </script>
 
 <h1 class="m-8 font-bold text-3xl tracking-tighter text-slate-700 dark:text-slate-300">svelte-theme-select</h1>
@@ -36,7 +35,7 @@
 					</div>
 				</div>
 				<div class="ml-6 flex items-center">
-					<ThemeToggle {theme} />
+					<ThemeToggle />
 				</div>
 			</div>
 		</div>
@@ -67,7 +66,7 @@
 			>
 		</div>
 		<div class="border-t border-slate-200 p-4">
-			<ThemeSelect {theme} />
+			<ThemeSelect />
 		</div>
 	</nav>
 </div>

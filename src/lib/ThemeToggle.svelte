@@ -1,11 +1,11 @@
 <script lang="ts">
 	import Transition from 'svelte-transition'
 	import { createMenu } from 'svelte-headlessui'
-	import { themes, type ThemeStore, type Theme } from './theme'
+	import { getThemeStore } from './context'
+	import { themes, type Theme } from './theme'
 
-	export let theme: ThemeStore
-
-	let menu = createMenu({ label: 'Theme' })
+	const theme = getThemeStore()
+	const menu = createMenu({ label: 'Theme' })
 
 	// wait until the popup has closed before applying the selected setting
 	// this is to prevent the drop down style changing as it disappears

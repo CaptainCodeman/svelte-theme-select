@@ -2,6 +2,7 @@ export interface Colors {
   // pageBackground: string
   selectLabel: string
   selectButton: string
+  selectIcon: string
   dropdownList: string
   dropdownHover: string
   textActive: string

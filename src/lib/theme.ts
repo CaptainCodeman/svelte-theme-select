@@ -1,6 +1,7 @@
 import { browser } from "$app/environment"
-import { writable } from "svelte/store"
-import { defaultColors } from "./colors"
+import { writable, type Readable } from "svelte/store"
+import { defaultColors, type Colors } from "./colors"
+import { setThemeStore } from "./context"
 import { defaultIcons, type Icons } from "./icon"
 
 export type Theme = 'light' | 'dark' | 'system'
@@ -21,6 +22,13 @@ export const defaultLabels = {
 
 export interface Config {
   key: string
+  icons: Icons
+  labels: Labels
+}
+
+export interface ThemeStore extends Readable<Theme> {
+  setTheme(value: Theme): void
+  colors: Colors
   icons: Icons
   labels: Labels
 }
@@ -47,13 +55,15 @@ export function createThemeSwitcher(config?: Partial<Config>) {
     }
   }
 
-  return {
+  const store: ThemeStore = {
     subscribe,
     setTheme,
     colors,
     icons,
     labels,
   }
-}
 
-export type ThemeStore = ReturnType<typeof createThemeSwitcher>
+  setThemeStore(store)
+
+  return store
+}
