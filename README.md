@@ -86,3 +86,20 @@ Set the light and dark mode backgrounds to use in your `src/app.html` app shell:
 ```
 
 Everything should then be in place to design using the TailWindCSS classes including the `dark:` prefix for when dark mode is active.
+
+
+## Customizing the Widget Style
+
+The UI widgets can be customized to match whatever TailwindCSS colors scheme you are using, the default icons can be replaced if desired, and the "Light", "Dark", and "System" labels replaced.
+
+### Colors
+
+Coming soon
+
+### Icons
+
+Coming soon
+
+### Labels
+
+Coming soon
