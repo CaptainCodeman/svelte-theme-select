@@ -2,7 +2,9 @@
 
 Customizable Svelte components for theme selection (light mode / dark mode) inspired by TailwindCSS.
 
+<img width="955" alt="svelte-theme-select-dark-mode" src="https://user-images.githubusercontent.com/304910/208352220-3b45ab48-d371-4580-abcf-e55ef872577c.png">
 
+<img width="955" alt="svelte-theme-select-light-mode" src="https://user-images.githubusercontent.com/304910/208352212-ed8c37f0-a5a3-4a87-acdb-cf922e013fad.png">
 
 ## About
 
