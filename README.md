@@ -14,7 +14,7 @@ A particularly nice touch is that it shows if the default system mode has been o
 
 For mobile users, where the navigation bar shrinks to become an expandable menu, they have a larger-hit-target version providing the same features.
 
-This project re-creates these UI widgets and provides the system to persist and apply the selected theme in your SvelteKit project.
+This project re-creates these UI widgets and provides the system to persist and apply the selected theme in your SvelteKit project. Please refer to [TailwindCSS Dark Mode](https://tailwindcss.com/docs/dark-mode) documentation for how to use dark mode styles within your app.
 
 ## Usage
 
