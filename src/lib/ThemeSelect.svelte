@@ -14,8 +14,8 @@
 <div class="flex items-center justify-between">
 	<label for="theme" class="font-normal {theme.colors.selectLabel}">Switch theme</label>
 	<div class="relative flex items-center font-semibold {theme.colors.selectButton}">
-		{@html theme.icons.light(false, 'w-6 h-6 mr-2 dark:hidden block')}
-		{@html theme.icons.dark(false, 'w-6 h-6 mr-2 hidden dark:block')}
+		<span class="w-6 h-6 mr-2 dark:hidden inline">{@html theme.icons.light(false)}</span>
+		<span class="w-6 h-6 mr-2 hidden dark:inline">{@html theme.icons.dark(false)}</span>
 		{theme.labels[$theme]}
 		<svg class="w-6 h-6 ml-2 {theme.colors.selectIcon}" fill="none">
 			<path d="m15 11-3 3-3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />

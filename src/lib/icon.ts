@@ -1,15 +1,15 @@
 import { defaultColors, type Colors } from "./colors"
 
 export interface Icons {
-	dark(active: boolean, cls?: string): string
-	light(active: boolean, cls?: string): string
-	system(active: boolean, cls?: string): string
+	dark(active: boolean): string
+	light(active: boolean): string
+	system(active: boolean): string
 }
 
 export const createDefaultIcons = (colors: Colors) => {
 	return {
-		dark: (active: boolean, cls = '') => /* svg */`
-<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+		dark: (active: boolean) => /* svg */`
+<svg viewBox="0 0 24 24" fill="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
 	<path
 		class="${active ? colors.iconActiveShade : colors.iconStroke}"
 		fill-rule="evenodd"
@@ -28,8 +28,8 @@ export const createDefaultIcons = (colors: Colors) => {
 	/>
 </svg>`,
 
-		light: (active: boolean, cls = '') => /* svg */`
-<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+		light: (active: boolean) => /* svg */`
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 	<path class="${active ? colors.iconActiveStroke + ' ' + colors.iconActiveShade : colors.iconStroke}" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
 	<path
 		class=${active ? colors.iconActiveStroke : colors.iconStroke}
@@ -37,8 +37,8 @@ export const createDefaultIcons = (colors: Colors) => {
 	/>
 </svg>`,
 
-		system: (active: boolean, cls = '') => /* svg */`
-<svg class="${cls}" viewBox="0 0 24 24" fill="none">
+		system: (active: boolean) => /* svg */`
+<svg viewBox="0 0 24 24" fill="none">
 	<path
 		class="${active ? colors.iconActiveStroke + ' ' + colors.iconActiveShade : colors.iconStroke}"
 		d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Z"
