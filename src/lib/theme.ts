@@ -22,6 +22,7 @@ export const defaultLabels = {
 
 export interface Config {
   key: string
+  colors: Colors
   icons: Icons
   labels: Labels
 }
