@@ -16,19 +16,19 @@
 					</div>
 					<div class="ml-6 flex space-x-8">
 						<a
-							href="#"
+							href="."
 							class="border-indigo-500 text-slate-900 dark:text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
 							aria-current="page">Dashboard</a
 						>
 
 						<a
-							href="#"
+							href="."
 							class="border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 dark:hover:text-slate-300 dark:hover:border-slate-600 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
 							>Team</a
 						>
 
 						<a
-							href="#"
+							href="."
 							class="border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 dark:hover:text-slate-300 dark:hover:border-slate-600 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
 							>Projects</a
 						>
@@ -48,19 +48,19 @@
 	<nav class="bg-white dark:bg-slate-800 shadow-sm">
 		<div class="space-y-1 pt-2 pb-3">
 			<a
-				href="#"
+				href="."
 				class="bg-indigo-50 border-indigo-500 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-200 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
 				aria-current="page">Dashboard</a
 			>
 
 			<a
-				href="#"
+				href="."
 				class="border-transparent text-slate-600 hover:bg-slate-50 hover:border-slate-300 hover:text-slate-800 dark:text-slate-500 dark:hover:text-slate-400 dark:hover:bg-slate-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
 				>Team</a
 			>
 
 			<a
-				href="#"
+				href="."
 				class="border-transparent text-slate-600 hover:bg-slate-50 hover:border-slate-300 hover:text-slate-800 dark:text-slate-500 dark:hover:text-slate-400 dark:hover:bg-slate-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
 				>Projects</a
 			>

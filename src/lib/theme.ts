@@ -1,4 +1,4 @@
-import { browser } from "$app/environment"
+import { BROWSER } from "esm-env"
 import { writable, type Readable } from "svelte/store"
 import { defaultColors, type Colors } from "./colors"
 import { setThemeStore } from "./context"
@@ -39,7 +39,7 @@ export function createThemeSwitcher(config?: Partial<Config>) {
 
   let theme: Theme = 'system'
 
-  if (browser) {
+  if (BROWSER) {
     const saved: Theme = localStorage.theme
     if (saved === 'light' || saved === 'dark') {
       theme = saved
