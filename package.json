@@ -1,70 +1,71 @@
 {
-  "name": "svelte-theme-select",
-  "version": "0.0.6",
-  "type": "module",
-  "keywords": [
-    "svelte",
-    "theme",
-    "mode",
-    "light",
-    "dark",
-    "prefers-color-scheme"
-  ],
-  "homepage": "https://captaincodeman.github.io/svelte-theme-select/",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/captaincodeman/svelte-theme-select.git"
-  },
-  "author": {
-    "name": "Simon Green",
-    "email": "simon@captaincodeman.com",
-    "url": "https://www.captaincodeman.com/"
-  },
-  "license": "MIT",
-  "scripts": {
-    "dev": "vite dev",
-    "sync": "svelte-kit sync",
-    "build": "vite build",
-    "preview": "vite preview",
-    "package": "svelte-kit sync && svelte-package && publint",
-    "prepublishOnly": "npm run package",
-    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "svelte": "./dist/index.js"
-    }
-  },
-  "files": [
-    "dist",
-    "!dist/**/*.test.*",
-    "!dist/**/*.spec.*"
-  ],
-  "svelte": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "peerDependencies": {
-    "svelte": "^3.54.0 || ^4.0.0"
-  },
-  "devDependencies": {
-    "@sveltejs/adapter-static": "^2.0.2",
-    "@sveltejs/kit": "^1.20.4",
-    "@sveltejs/package": "^2.0.2",
-    "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.24",
-    "postcss-load-config": "^4.0.1",
-    "publint": "^0.1.12",
-    "svelte": "^4.0.0",
-    "svelte-check": "^3.4.4",
-    "tailwindcss": "^3.3.2",
-    "tslib": "^2.5.3",
-    "typescript": "^5.1.3",
-    "vite": "^4.3.9"
-  },
-  "dependencies": {
-    "esm-env": "^1.0.0",
-    "svelte-headlessui": "^0.0.17",
-    "svelte-transition": "^0.0.10"
-  }
+	"name": "svelte-theme-select",
+	"version": "0.0.7",
+	"type": "module",
+	"keywords": [
+		"svelte",
+		"theme",
+		"mode",
+		"light",
+		"dark",
+		"prefers-color-scheme"
+	],
+	"homepage": "https://captaincodeman.github.io/svelte-theme-select/",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/captaincodeman/svelte-theme-select.git"
+	},
+	"author": {
+		"name": "Simon Green",
+		"email": "simon@captaincodeman.com",
+		"url": "https://www.captaincodeman.com/"
+	},
+	"license": "MIT",
+	"scripts": {
+		"dev": "vite dev",
+		"sync": "svelte-kit sync",
+		"build": "vite build",
+		"preview": "vite preview",
+		"package": "svelte-kit sync && svelte-package && publint",
+		"prepublishOnly": "npm run package",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist",
+		"!dist/**/*.test.*",
+		"!dist/**/*.spec.*"
+	],
+	"svelte": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"peerDependencies": {
+		"svelte": "^3.54.0 || ^4.0.0 || ^5.0.0"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-static": "^3.0.1",
+		"@sveltejs/kit": "^2.5.7",
+		"@sveltejs/package": "^2.3.1",
+		"@sveltejs/vite-plugin-svelte": "^3.1.0",
+		"autoprefixer": "^10.4.19",
+		"postcss": "^8.4.38",
+		"postcss-load-config": "^5.0.3",
+		"publint": "^0.2.7",
+		"svelte": "^4.2.15",
+		"svelte-check": "^3.7.0",
+		"tailwindcss": "^3.4.3",
+		"tslib": "^2.6.2",
+		"typescript": "^5.4.5",
+		"vite": "^5.2.10"
+	},
+	"dependencies": {
+		"esm-env": "^1.0.0",
+		"svelte-headlessui": "^0.0.34",
+		"svelte-transition": "^0.0.11"
+	}
 }
