@@ -4,7 +4,7 @@
 
 	const theme = getThemeStore()
 
-	// NOTE: the body of this function is also written into the page head to execute on initial page load
+	// NOTE: this is the same script that is written into the page head to set the initial mode
 	const applyTheme = () =>
 		document.documentElement.classList.toggle(
 			'dark',
@@ -54,11 +54,9 @@
 			unsubscribe()
 		}
 	})
-
-	// avoid defining the function twice (we want to run the same script in the head as when the theme changes)
-	const updateFn = applyTheme.toString()
-	const updateScript = '<scr' + 'ipt>' + updateFn.substring(6) + '</scr' + 'ipt>'
 </script>
 
 <!-- this sets initial dark mode class based on user preference / device settings (in head to avoid FOUC) -->
-<svelte:head>{@html updateScript}</svelte:head>
+<svelte:head>
+	<script>document.documentElement.classList.toggle("dark", localStorage.theme === "dark" || !localStorage.theme && window.matchMedia("(prefers-color-scheme: dark)").matches)</script>
+</svelte:head>
