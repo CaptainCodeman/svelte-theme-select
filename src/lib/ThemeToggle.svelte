@@ -11,10 +11,13 @@
 	// this is to prevent the drop down style changing as it disappears
 	let pending: Theme | undefined = undefined
 
-	function select(event: Event) {
+	function change(event: Event) {
 		const { detail } = event as CustomEvent
 		const { selected } = detail
-		pending = selected
+		if (selected) {
+			pending = selected
+			menu.close()
+		}
 	}
 
 	function closed() {
@@ -27,7 +30,7 @@
 </script>
 
 <div class="relative inline-block">
-	<button class="w-6 h-6 leading-none" on:select={select} use:menu.button>
+	<button class="w-6 h-6 leading-none" use:menu.button on:change={change}>
 		<span hidden={$theme === 'system'}>
 			<span class="dark:hidden inline">{@html theme.icons.light(true)}</span>
 			<span class="hidden dark:inline">{@html theme.icons.dark(true)}</span>
