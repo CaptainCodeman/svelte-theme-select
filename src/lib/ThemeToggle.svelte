@@ -28,8 +28,14 @@
 
 <div class="relative inline-block">
 	<button class="w-6 h-6 leading-none" on:select={select} use:menu.button>
-		<span class="dark:hidden inline">{@html theme.icons.light($theme !== 'system')}</span>
-		<span class="hidden dark:inline">{@html theme.icons.dark($theme !== 'system')}</span>
+		<span hidden={$theme === 'system'}>
+			<span class="dark:hidden inline">{@html theme.icons.light(true)}</span>
+			<span class="hidden dark:inline">{@html theme.icons.dark(true)}</span>
+		</span>
+		<span hidden={$theme !== 'system'}>
+			<span class="dark:hidden inline">{@html theme.icons.light(false)}</span>
+			<span class="hidden dark:inline">{@html theme.icons.dark(false)}</span>
+		</span>
 	</button>
 
 	<Transition
@@ -51,7 +57,8 @@
 						: ''}"
 					use:menu.item={{ value }}
 				>
-					<span class="w-6 h-6 mr-2">{@html theme.icons[value](active)}</span>
+					<span class="w-6 h-6 mr-2" hidden={!active}>{@html theme.icons[value](true)}</span>
+					<span class="w-6 h-6 mr-2" hidden={active}>{@html theme.icons[value](false)}</span>
 					{theme.labels[value]}
 				</li>
 			{/each}
