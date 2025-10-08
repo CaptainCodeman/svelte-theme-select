@@ -1,6 +1,6 @@
 # svelte-theme-select
 
-Customizable Svelte components for theme selection (light mode / dark mode) inspired by TailwindCSS. Flicker-free, works with or without SSR and doesn't require unnecessary use of `transformPageChunk` so is cache-friendly.
+Customizable Svelte components for theme selection (light mode / dark mode) inspired by TailwindCSS. Flicker-free, synchronizes across tabs, works with or without SSR and doesn't require unnecessary use of `transformPageChunk` so is cache-friendly.
 
 <img width="955" alt="svelte-theme-select-dark-mode" src="https://user-images.githubusercontent.com/304910/208352220-3b45ab48-d371-4580-abcf-e55ef872577c.png">
 
