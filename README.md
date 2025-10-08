@@ -1,6 +1,6 @@
 # svelte-theme-select
 
-Customizable Svelte components for theme selection (light mode / dark mode) inspired by TailwindCSS.
+Customizable Svelte components for theme selection (light mode / dark mode) inspired by TailwindCSS. Flicker-free, works with or without SSR and doesn't require unnecessary use of `transformPageChunk` so is cache-friendly.
 
 <img width="955" alt="svelte-theme-select-dark-mode" src="https://user-images.githubusercontent.com/304910/208352220-3b45ab48-d371-4580-abcf-e55ef872577c.png">
 
@@ -26,7 +26,7 @@ Install using your package manager of choice:
 
 ### Add to root +layout.svelte
 
-Include the `<Theme>` component which writes the JS into the page header to apply the theme _before_ hydration (this avoids a flash of the wrong styles). The `<ThemeToggle>` component provides the desktop icon and menu, the `<ThemeSelect>` component provides the mobile friendly equivalent. This is a cut-down layout, checkout the [ready made templates available from TailwindUI](https://tailwindui.com/).
+Include the `<Theme>` component which writes the JS into the page header to apply the theme _before_ hydration (this avoids a flash of the wrong styles). The `<ThemeToggle>` component provides the desktop icon and popup menu, the `<ThemeSelect>` component provides the mobile friendly equivalent. This is a cut-down layout, checkout the [ready made templates available from TailwindUI](https://tailwindui.com/).
 
 ```svelte
 <script lang="ts">
