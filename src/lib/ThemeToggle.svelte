@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Transition from 'svelte-transition'
 	import { createMenu } from 'svelte-headlessui'
-	import { theme, themes, type Theme } from './theme'
+	import { theme, themes, type Theme } from './state.svelte'
 	import Icon from './Icon.svelte'
 
 	const menu = createMenu({ label: 'Theme' })

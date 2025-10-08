@@ -44,6 +44,10 @@ class ThemeState {
 			this.#override = saved
 			update()
 
+			$effect(() => {
+				document.documentElement.classList.toggle('dark', this.current === 'dark')
+			})
+
 			return on(window, 'storage', (event: StorageEvent) => {
 				if (event.key === 'theme') {
 					this.#override = event.newValue as Theme
@@ -86,7 +90,6 @@ class ThemeState {
 		}
 		this.#override = value
 		this.#update?.()
-		document.documentElement.classList.toggle('dark', this.current === 'dark')
 	}
 }
 

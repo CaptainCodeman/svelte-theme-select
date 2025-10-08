@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/environment'
 	import Icon from './Icon.svelte'
-	import { theme, themes, type Theme } from './theme'
+	import { theme, themes, type Theme } from './state.svelte'
 
 	function onChange(e: Event) {
 		const el = e.target as HTMLSelectElement

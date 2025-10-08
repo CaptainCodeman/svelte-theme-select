@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { theme } from './theme'
+	import { theme } from './state.svelte'
 </script>
 
 <span class="size-6" hidden={theme.override === 'system'}>
