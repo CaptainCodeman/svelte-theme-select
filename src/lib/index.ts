@@ -1,4 +1,4 @@
-export * from './icon'
+export * from './icons'
 export * from './theme'
 export { default as Theme } from './Theme.svelte'
 export { default as ThemeToggle } from './ThemeToggle.svelte'

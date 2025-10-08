@@ -1,10 +1,15 @@
 <script lang="ts">
-	import { createThemeSwitcher, Theme } from '$lib'
-	import '../app.postcss'
+	import { Theme } from '$lib'
+	import type { Snippet } from 'svelte'
+	import '../app.css'
 
-	createThemeSwitcher()
+	interface Props {
+		children?: Snippet
+	}
+
+	let { children }: Props = $props()
 </script>
 
-<slot />
+{@render children?.()}
 
 <Theme />

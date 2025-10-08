@@ -26,15 +26,15 @@ Install using your package manager of choice:
 
 ### Add to root +layout.svelte
 
-Create an instance of the theme manager in your root `src/routes/+layout.svelte` file and include the `<Theme>` component which writes the JS into the page to apply the theme. The `<ThemeToggle>` component provides the desktop icon and menu, the `<ThemeSelect>` component provides the mobile friendly equivalent. This is a cut-down layout, checkout the [ready made templates available from TailwindUI](https://tailwindui.com/).
+Include the `<Theme>` component which writes the JS into the page header to apply the theme _before_ hydration (this avoids a flash of the wrong styles). The `<ThemeToggle>` component provides the desktop icon and menu, the `<ThemeSelect>` component provides the mobile friendly equivalent. This is a cut-down layout, checkout the [ready made templates available from TailwindUI](https://tailwindui.com/).
 
 ```svelte
 <script lang="ts">
-  import { createThemeSwitcher, Theme, ThemeToggle, ThemeSelect } from 'svelte-theme-select'
-  import '../app.postcss'
-
-  createThemeSwitcher()
+  import { Theme, ThemeToggle, ThemeSelect } from 'svelte-theme-select'
+  import '../app.css'
 </script>
+
+<Theme />
 
 <nav>
   <!-- desktop navigation -->
@@ -50,29 +50,16 @@ Create an instance of the theme manager in your root `src/routes/+layout.svelte`
   </div>
 </nav>
 
-<slot />
-
-<Theme />
+{@render children?.()}
 ```
 
 ### Configure TailwindCSS dark-mode
 
 Configure TailwindCSS to [toggle dark mode manually using a class](https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually):
 
-```js
-const config = {
-  content: ['./src/**/*.{html,js,svelte,ts}'],
-
-  theme: {
-    extend: {},
-  },
-
-  darkMode: 'class',
-
-  plugins: [],
-}
-
-module.exports = config
+```css
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 ```
 
 ### Define light / dark background colors
@@ -86,7 +73,6 @@ Set the light and dark mode backgrounds to use in your `src/app.html` app shell:
 ```
 
 Everything should then be in place to design using the TailWindCSS classes including the `dark:` prefix for when dark mode is active.
-
 
 ## Customizing the Widget Style
 

@@ -1,10 +1,9 @@
 <script lang="ts">
 	import Transition from 'svelte-transition'
 	import { createMenu } from 'svelte-headlessui'
-	import { getThemeStore } from './context'
-	import { themes, type Theme } from './theme'
+	import { theme, themes, type Theme } from './theme'
+	import Icon from './Icon.svelte'
 
-	const theme = getThemeStore()
 	const menu = createMenu({ label: 'Theme' })
 
 	// wait until the popup has closed before applying the selected setting
@@ -12,7 +11,7 @@
 	let pending: Theme | undefined = undefined
 
 	function change(event: Event) {
-		const { detail } = event as CustomEvent
+		const { detail } = event as CustomEvent<{ selected: Theme }>
 		const { selected } = detail
 		if (selected) {
 			pending = selected
@@ -23,22 +22,23 @@
 	function closed() {
 		// apply any pending setting once closed
 		if (pending) {
-			theme.setTheme(pending)
+			theme.current = pending
 			pending = undefined
 		}
 	}
 </script>
 
 <div class="relative inline-block">
-	<button class="w-6 h-6 leading-none" use:menu.button on:change={change}>
-		<span hidden={$theme === 'system'}>
+	<button class="w-6 h-6 leading-none" use:menu.button onchange={change}>
+		<Icon />
+		<!-- <span hidden={theme.override === 'system'}>
 			<span class="dark:hidden inline">{@html theme.icons.light(true)}</span>
 			<span class="hidden dark:inline">{@html theme.icons.dark(true)}</span>
 		</span>
-		<span hidden={$theme !== 'system'}>
+		<span hidden={theme.override !== 'system'}>
 			<span class="dark:hidden inline">{@html theme.icons.light(false)}</span>
 			<span class="hidden dark:inline">{@html theme.icons.dark(false)}</span>
-		</span>
+		</span> -->
 	</button>
 
 	<Transition
@@ -53,7 +53,7 @@
 	>
 		<ul class="origin-top-right absolute right-0 py-1 mt-2 w-28 rounded-md shadow-lg focus:outline-none {theme.colors.dropdownList}" use:menu.items>
 			{#each themes as value}
-				{@const active = value === $theme}
+				{@const active = value === theme.override}
 				<li
 					class="flex items-center px-2 py-1 text-sm font-semibold cursor-pointer {theme.colors.dropdownHover} {active
 						? theme.colors.textActive

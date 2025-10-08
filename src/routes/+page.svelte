@@ -11,8 +11,8 @@
 		<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 			<div class="flex h-16 justify-between">
 				<div class="flex">
-					<div class="flex flex-shrink-0 items-center">
-						<img class="block w-8 h-8" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company" />
+					<div class="flex shrink-0 items-center">
+						<img class="block w-8 h-8" src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" />
 					</div>
 					<div class="ml-6 flex space-x-8">
 						<a

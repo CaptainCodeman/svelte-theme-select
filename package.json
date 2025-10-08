@@ -1,6 +1,6 @@
 {
 	"name": "svelte-theme-select",
-	"version": "0.0.9",
+	"version": "0.1.0",
 	"type": "module",
 	"keywords": [
 		"svelte",
@@ -45,27 +45,26 @@
 	"svelte": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"peerDependencies": {
-		"svelte": "^3.54.0 || ^4.0.0 || ^5.0.0"
+		"svelte": "^5.0.0"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-static": "^3.0.5",
-		"@sveltejs/kit": "^2.7.2",
-		"@sveltejs/package": "^2.3.6",
-		"@sveltejs/vite-plugin-svelte": "^3.1.2",
-		"autoprefixer": "^10.4.20",
-		"postcss": "^8.4.47",
-		"postcss-load-config": "^6.0.1",
-		"publint": "^0.2.12",
-		"svelte": "^4.2.19",
-		"svelte-check": "^3.8.6",
-		"tailwindcss": "^3.4.14",
-		"tslib": "^2.8.0",
-		"typescript": "^5.6.3",
-		"vite": "^5.4.10"
+		"@sveltejs/adapter-static": "^3.0.10",
+		"@sveltejs/kit": "^2.46.4",
+		"@sveltejs/package": "^2.5.4",
+		"@sveltejs/vite-plugin-svelte": "^6.2.1",
+		"@tailwindcss/vite": "^4.1.14",
+		"autoprefixer": "^10.4.21",
+		"publint": "^0.3.14",
+		"svelte": "^5.39.11",
+		"svelte-check": "^4.3.3",
+		"tailwindcss": "^4.1.14",
+		"tslib": "^2.8.1",
+		"typescript": "^5.9.3",
+		"vite": "^7.1.9"
 	},
 	"dependencies": {
-		"esm-env": "^1.0.0",
-		"svelte-headlessui": "^0.0.43",
+		"esm-env": "^1.2.2",
+		"svelte-headlessui": "^0.0.46",
 		"svelte-transition": "^0.0.17"
 	}
 }
