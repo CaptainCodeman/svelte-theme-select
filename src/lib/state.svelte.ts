@@ -27,8 +27,9 @@ export interface Config {
 }
 
 class ThemeState {
-	#system = new MediaQuery('(prefers-color-scheme: dark)')
-	#override: Theme = 'system'
+	#override = $state<Theme>('system')
+	#system: Theme
+	#value: Theme
 	#subscribe: VoidFunction
 	#update?: VoidFunction
 
@@ -37,16 +38,15 @@ class ThemeState {
 	labels = defaultLabels
 
 	constructor() {
+		const prefersDark = new MediaQuery('(prefers-color-scheme: dark)')
+		this.#system = $derived(prefersDark.current ? 'dark' : 'light')
+		this.#value = $derived(this.#override === 'system' ? this.#system : this.#override)
+
 		this.#subscribe = createSubscriber(update => {
 			this.#update = update
-
 			const saved: Theme = localStorage.theme ?? 'system'
 			this.#override = saved
 			update()
-
-			$effect(() => {
-				document.documentElement.classList.toggle('dark', this.current === 'dark')
-			})
 
 			return on(window, 'storage', (event: StorageEvent) => {
 				if (event.key === 'theme') {
@@ -55,11 +55,16 @@ class ThemeState {
 				}
 			})
 		})
+
+		$effect.root(() => {
+			$effect.pre(() => {
+				document.documentElement.classList.toggle('dark', this.#value === 'dark')
+			})
+		})
 	}
 
 	get system() {
-		this.#subscribe()
-		return this.#system.current
+		return this.#system
 	}
 
 	get override() {
@@ -69,13 +74,7 @@ class ThemeState {
 
 	get current() {
 		this.#subscribe()
-		switch (this.#override) {
-			case 'dark':
-			case 'light':
-				return this.#override
-			case 'system':
-				return this.#system.current ? 'dark' : 'light'
-		}
+		return this.#value
 	}
 
 	set current(value: Theme) {
