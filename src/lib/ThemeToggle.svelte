@@ -31,14 +31,6 @@
 <div class="relative inline-block">
 	<button class="w-6 h-6 leading-none" use:menu.button onchange={change}>
 		<Icon />
-		<!-- <span hidden={theme.override === 'system'}>
-			<span class="dark:hidden inline">{@html theme.icons.light(true)}</span>
-			<span class="hidden dark:inline">{@html theme.icons.dark(true)}</span>
-		</span>
-		<span hidden={theme.override !== 'system'}>
-			<span class="dark:hidden inline">{@html theme.icons.light(false)}</span>
-			<span class="hidden dark:inline">{@html theme.icons.dark(false)}</span>
-		</span> -->
 	</button>
 
 	<Transition

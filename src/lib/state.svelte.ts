@@ -1,6 +1,6 @@
 import { defaultColors, type Colors } from "./colors"
 import { defaultIcons, type Icons } from "./icons"
-import { createSubscriber, MediaQuery } from "svelte/reactivity"
+import { MediaQuery } from "svelte/reactivity"
 import { on } from "svelte/events"
 
 export type Theme = 'light' | 'dark' | 'system'
@@ -8,76 +8,85 @@ export type Theme = 'light' | 'dark' | 'system'
 export const themes: Theme[] = ['light', 'dark', 'system']
 
 export interface Labels {
-  light: string
-  dark: string
-  system: string
+	light: string
+	dark: string
+	system: string
 }
 
 export const defaultLabels = {
-  light: 'Light',
-  dark: 'Dark',
-  system: 'System',
+	light: 'Light',
+	dark: 'Dark',
+	system: 'System',
 }
 
 export interface Config {
-  key: string
-  colors: Colors
-  icons: Icons
-  labels: Labels
+	key: string
+	colors: Colors
+	icons: Icons
+	labels: Labels
 }
 
 class ThemeState {
+	#mq = new MediaQuery('(prefers-color-scheme: dark)')
+	#system = $derived<Theme>(this.#mq.current ? 'dark' : 'light')
 	#override = $state<Theme>('system')
-	#system: Theme
-	#value: Theme
-	#subscribe: VoidFunction
-	#update?: VoidFunction
+	#value = $derived(this.#override === 'system' ? this.#system : this.#override)
+
+	#subscribers = 0
+	#off?: VoidFunction
 
 	colors = defaultColors
 	icons = defaultIcons
 	labels = defaultLabels
 
-	constructor() {
-		const prefersDark = new MediaQuery('(prefers-color-scheme: dark)')
-		this.#system = $derived(prefersDark.current ? 'dark' : 'light')
-		this.#value = $derived(this.#override === 'system' ? this.#system : this.#override)
+	private subscribe() {
+		if ($effect.tracking()) {
+			$effect(() => {
+				if (this.#subscribers === 0) {
+					const saved: Theme = localStorage.theme ?? 'system'
+					this.#override = saved
 
-		this.#subscribe = createSubscriber(update => {
-			this.#update = update
-			const saved: Theme = localStorage.theme ?? 'system'
-			this.#override = saved
-			update()
+					this.#off = on(window, 'storage', (event: StorageEvent) => {
+						if (event.key === 'theme') {
+							this.#override = event.newValue as Theme
+						}
+					})
 
-			return on(window, 'storage', (event: StorageEvent) => {
-				if (event.key === 'theme') {
-					this.#override = event.newValue as Theme
-					update()
+					$effect(() => {
+						document.documentElement.classList.toggle('dark', this.#value === 'dark')
+					})
+				}
+
+				this.#subscribers++
+
+				return () => {
+					this.#subscribers--
+					if (this.#subscribers === 0) {
+						this.#off?.()
+						this.#off = undefined
+					}
 				}
 			})
-		})
-
-		$effect.root(() => {
-			$effect.pre(() => {
-				document.documentElement.classList.toggle('dark', this.#value === 'dark')
-			})
-		})
+		}
 	}
 
 	get system() {
+		this.subscribe()
 		return this.#system
 	}
 
 	get override() {
-		this.#subscribe()
+		this.subscribe()
 		return this.#override
 	}
 
 	get current() {
-		this.#subscribe()
+		this.subscribe()
 		return this.#value
 	}
 
 	set current(value: Theme) {
+		this.subscribe()
 		switch (value) {
 			case 'dark':
 			case 'light':
@@ -88,7 +97,6 @@ class ThemeState {
 				break
 		}
 		this.#override = value
-		this.#update?.()
 	}
 }
 
