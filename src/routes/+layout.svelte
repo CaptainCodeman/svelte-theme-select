@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Theme } from '$lib'
+	import { Theme } from 'svelte-theme-select'
 	import type { Snippet } from 'svelte'
 	import '../app.css'
 

@@ -1,30 +1,9 @@
-import { defaultColors, type Colors } from "./colors"
-import { defaultIcons, type Icons } from "./icons"
 import { MediaQuery } from "svelte/reactivity"
 import { on } from "svelte/events"
+import { BROWSER } from "esm-env"
 
-export type Theme = 'light' | 'dark' | 'system'
-
-export const themes: Theme[] = ['light', 'dark', 'system']
-
-export interface Labels {
-	light: string
-	dark: string
-	system: string
-}
-
-export const defaultLabels = {
-	light: 'Light',
-	dark: 'Dark',
-	system: 'System',
-}
-
-export interface Config {
-	key: string
-	colors: Colors
-	icons: Icons
-	labels: Labels
-}
+export const Theme = ['light', 'dark', 'system'] as const
+export type Theme = (typeof Theme)[number]
 
 class ThemeState {
 	#mq = new MediaQuery('(prefers-color-scheme: dark)')
@@ -35,17 +14,17 @@ class ThemeState {
 	#subscribers = 0
 	#off?: VoidFunction
 
-	colors = defaultColors
-	icons = defaultIcons
-	labels = defaultLabels
+	constructor() {
+		if (BROWSER) {
+			const saved: Theme = localStorage.theme ?? 'system'
+			this.#override = saved
+		}
+	}
 
 	private subscribe() {
 		if ($effect.tracking()) {
 			$effect(() => {
 				if (this.#subscribers === 0) {
-					const saved: Theme = localStorage.theme ?? 'system'
-					this.#override = saved
-
 					this.#off = on(window, 'storage', (event: StorageEvent) => {
 						if (event.key === 'theme') {
 							this.#override = event.newValue as Theme
@@ -80,13 +59,7 @@ class ThemeState {
 		return this.#override
 	}
 
-	get current() {
-		this.subscribe()
-		return this.#value
-	}
-
-	set current(value: Theme) {
-		this.subscribe()
+	set override(value: Theme) {
 		switch (value) {
 			case 'dark':
 			case 'light':
@@ -97,6 +70,11 @@ class ThemeState {
 				break
 		}
 		this.#override = value
+	}
+
+	get current() {
+		this.subscribe()
+		return this.#value
 	}
 }
 

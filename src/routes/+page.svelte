@@ -1,5 +1,5 @@
-<script>
-	import { ThemeToggle, ThemeSelect } from '$lib'
+<script lang="ts">
+	import { ThemeRadio, ThemeSelect, ThemeToggle } from 'svelte-theme-select'
 </script>
 
 <h1 class="m-8 font-bold text-3xl tracking-tighter text-slate-700 dark:text-slate-300">svelte-theme-select</h1>
@@ -42,7 +42,7 @@
 	</nav>
 </div>
 
-<h2 class="m-8 font-bold text-xl tracking-tighter text-slate-600 dark:text-slate-400">Mobile Navigation Style</h2>
+<h2 class="m-8 font-bold text-xl tracking-tighter text-slate-600 dark:text-slate-400">Mobile Select Style</h2>
 
 <div class="border border-slate-300 dark:border-slate-700 m-8 max-w-sm">
 	<nav class="bg-white dark:bg-slate-800 shadow-sm">
@@ -69,6 +69,12 @@
 			<ThemeSelect />
 		</div>
 	</nav>
+</div>
+
+<h2 class="m-8 font-bold text-xl tracking-tighter text-slate-600 dark:text-slate-400">Radio Button Style</h2>
+
+<div class="m-8">
+	<ThemeRadio />
 </div>
 
 <h2 class="m-8 font-bold text-xl tracking-tighter text-slate-600 dark:text-slate-400">Example Content</h2>

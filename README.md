@@ -8,11 +8,13 @@ Customizable Svelte components for theme selection (light mode / dark mode) insp
 
 ## About
 
-The [TailwindCSS site](https://tailwindcss.com/) is a great example of excellent UX and the theme select option is particularly nice. A simple icon gives access to a menu to set the theme to light mode or dark mode, or allow the system to automatically switch based on your device configuration (which can change based on the time of day).
+The [TailwindCSS site](https://tailwindcss.com/) is a great example of excellent UX. A simple icon gives access to a menu to set the theme to light mode or dark mode, or allow the system to automatically switch based on your device configuration (which can change based on the time of day).
 
 A particularly nice touch is that it shows if the default system mode has been overridden using a different icon color.
 
 For mobile users, where the navigation bar shrinks to become an expandable menu, they have a larger-hit-target version providing the same features.
+
+They have since switched to a single set of icons allowing quick switching between system, light, or dark modes that is compact and works well on mobile or desktop.
 
 This project re-creates these UI widgets and provides the system to persist and apply the selected theme in your SvelteKit project. Please refer to [TailwindCSS Dark Mode](https://tailwindcss.com/docs/dark-mode) documentation for how to use dark mode styles within your app.
 
@@ -78,14 +80,4 @@ Everything should then be in place to design using the TailWindCSS classes inclu
 
 The UI widgets can be customized to match whatever TailwindCSS colors scheme you are using, the default icons can be replaced if desired, and the "Light", "Dark", and "System" labels replaced.
 
-### Colors
-
-Coming soon
-
-### Icons
-
-Coming soon
-
-### Labels
-
-Coming soon
+TODO: document customizations
